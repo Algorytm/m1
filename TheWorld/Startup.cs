@@ -29,14 +29,6 @@ namespace TheWorld
             {
                 app.UseDeveloperExceptionPage();
             }
-            /*
-            app.Run(async (context) =>
-            {
-                await context.Response.WriteAsync("Hello World!");
-            });
-            */
-
-            //app.UseDefaultFiles("");
 
             app.UseStaticFiles();
 
@@ -50,7 +42,7 @@ namespace TheWorld
             config.MapRoute(
                 name: "Default",
                 template: "{controller}/{action}/{id?}",
-                defaults: new { contrller = "App", action = "Index" }
+                defaults: new { controller = "App", action = "Index" }
                 );
         }
 

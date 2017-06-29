@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.ApplicationInsights.Extensibility;
 
 namespace TheWorld
 {
@@ -11,6 +12,10 @@ namespace TheWorld
     {
         public static void Main(string[] args)
         {
+#if DEBUG
+            TelemetryConfiguration.Active.DisableTelemetry = true;
+#endif
+
             var host = new WebHostBuilder()
                 .UseKestrel()
                 .UseContentRoot(Directory.GetCurrentDirectory())
