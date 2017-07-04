@@ -38,6 +38,31 @@ namespace TheWorld.Controllers.Api
                 return BadRequest("Failed to get stops");
             }
         }
+
+        [HttpPost("")]
+        public async Task<IActionResult> Post(string tripName, [FromBody]StopViewModel vm)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    var newStop = Mapper.Map<Stop>(vm);
+
+                    _repository.AddStop(tripName, newStop);
+                    if (await _repository.SaveChangesAsync())
+                    {
+                        return Created($"/api/trips/{tripName}/stops/{newStop.Name}", Mapper.Map<StopViewModel>(newStop));
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError($"Failed to save new stops: {ex}");
+                
+            }
+            return BadRequest("Failed to save new stops");
+        }
+
         
     }
 }
