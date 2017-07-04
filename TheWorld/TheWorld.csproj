@@ -6,7 +6,10 @@
 
   <ItemGroup>
     <Content Include="wwwroot\css\site.css" />
-    <Content Include="wwwroot\js\site.js" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Content Include="wwwroot\js\site_scripts.js" />
   </ItemGroup>
 
   <ItemGroup>
@@ -14,6 +17,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="6.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="1.1.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="1.1.2" PrivateAssets="All" />
   </ItemGroup>
   <ItemGroup>
