@@ -37,6 +37,8 @@ namespace TheWorld.Controllers.Web
             {
                 var data = _repository.GetAllTrips();
                 return View(data);
+                
+                //return View();
             }
             catch (Exception ex)
             {

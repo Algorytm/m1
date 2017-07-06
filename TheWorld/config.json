@@ -3,7 +3,7 @@
     "ToAddress": "pzapasnik@gmail.com"
   },
   "ConnectionStrings": {
-    "WorldContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=TheWorldDb;Trusted_Connection=True;MultipleActiveResultSets=True;"
+    "WorldContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=TheWorldDb;Trusted_Connection=True;MultipleActiveResultSets=true;"
   },
   "Keys": {
     "BingKey": "apiKey"
