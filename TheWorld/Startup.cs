@@ -15,6 +15,7 @@ using Newtonsoft.Json.Serialization;
 using AutoMapper;
 using TheWorld.ViewModels;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc;
 
 namespace TheWorld
 {
@@ -39,7 +40,19 @@ namespace TheWorld
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            
+            services.AddMvc(config =>
+            {
+                if (_env.IsProduction())
+                {
+                    config.Filters.Add(new RequireHttpsAttribute());
+                }
+            })
+                .AddJsonOptions(config =>
+                {
+                    config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                }
+            );
+
             services.AddIdentity<WorldUser, IdentityRole>(config =>
                 {
                     config.User.RequireUniqueEmail = true;
@@ -47,7 +60,8 @@ namespace TheWorld
                     config.Cookies.ApplicationCookie.LoginPath = "/Auth/Login";
                 }
             ).AddEntityFrameworkStores<WorldContext>();
-            
+
+            services.AddLogging();
 
             services.AddSingleton(_config);
 
@@ -68,15 +82,6 @@ namespace TheWorld
 
             services.AddTransient<WorldContextSeedData>();
 
-            services.AddLogging();
-
-            services.AddMvc()
-                .AddJsonOptions(config =>
-                {
-                    config.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
-                }
-            );
-            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
