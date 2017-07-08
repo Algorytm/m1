@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using System.Threading.Tasks;
 using TheWorld.Models;
 using TheWorld.ViewModels;
@@ -31,7 +32,6 @@ namespace TheWorld.Controllers.Api
             try
             {
                 var results = _repository.GetTripByUsername(this.User.Identity.Name);
-
                 return Ok(Mapper.Map<IEnumerable<TripViewModel>>(results));
             }
             catch (Exception ex)

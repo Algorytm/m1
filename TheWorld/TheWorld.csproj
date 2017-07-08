@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="wwwroot\js\app-trips.js" />
+    <Content Include="wwwroot\js\tripsController.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\index.html" />
   </ItemGroup>
   <ItemGroup>

@@ -22,7 +22,7 @@ namespace TheWorld.Models
         public void AddStop(string tripName, Stop newStop, string username)
         {
             var trip = GetUserTripByName(tripName, username);
-            if(trip!=null)
+            if (trip != null)
             {
                 trip.Stops.Add(newStop);
                 _context.Stops.Add(newStop);
@@ -53,14 +53,14 @@ namespace TheWorld.Models
             return _context
                 .Trips
                 .Include(t => t.Stops)
-                .Where(x => x.UserName == name).ToList();
+                .Where(x => x.UserName == name || x.UserName == null || x.UserName == "").ToList();
         }
 
         public Trip GetUserTripByName(string tripName, string username)
         {
             return _context.Trips
                 .Include(t => t.Stops)
-                .Where(t => t.Name == tripName&& t.UserName == username)
+                .Where(t => t.Name == tripName && t.UserName == username)
                 .FirstOrDefault();
         }
 
