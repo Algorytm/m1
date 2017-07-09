@@ -13,7 +13,7 @@
             </tr>
             <tr ng-repeat="stop in vm.stops">
                 <td>{{ stop.name }}</td>
-                <td>{{ stop.arrivial | date:shortDate }}</td>
+                <td>{{ stop.arrival | date:shortDate }}</td>
 
             </tr>
         </table>
@@ -34,15 +34,8 @@
         </form>
     </div>
 
-    <div class="col-md-3">
+    <div class="col-md-9">
         <h2>The Map</h2>
-        <ul>
-            <!--
-            @foreach (var trip in Model)
-            {
-            <li>@trip.Name : @trip.DateCreated.ToString("d")</li>
-            }
-            -->
-        </ul>
+        <div id="map"></div>
     </div>
 </div>
