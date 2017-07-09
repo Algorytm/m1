@@ -35,7 +35,7 @@ namespace TheWorld.Controllers.Api
             {
                 var trip = _repository.GetUserTripByName(tripName, User.Identity.Name);
 
-                return Ok(Mapper.Map<IEnumerable<StopViewModel>>(trip.Stops.OrderBy(x => x.Order).ToList().Take<Stop>(3)));
+                return Ok(Mapper.Map<IEnumerable<StopViewModel>>(trip.Stops.OrderBy(x => x.Order).ToList()));
             }
             catch (Exception ex)
             {

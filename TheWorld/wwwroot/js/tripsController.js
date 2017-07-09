@@ -41,9 +41,9 @@
             vm.errorMessage = "";
 
             $http.post("/api/trips", vm.newTrip)
-                .then(function (responce) {
+                .then(function (response) {
                     // Success
-                    vm.trips.push(responce.data);
+                    vm.trips.push(response.data);
                     vm.newTrip = {};
 
                 }, function (error) {
