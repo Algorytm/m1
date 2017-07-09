@@ -60,7 +60,7 @@ namespace TheWorld.Models
         {
             return _context.Trips
                 .Include(t => t.Stops)
-                .Where(t => t.Name == tripName && t.UserName == username)
+                .Where(t => t.Name == tripName && (t.UserName == username || t.UserName == null || t.UserName == ""))
                 .FirstOrDefault();
         }
 
