@@ -32,6 +32,7 @@ namespace TheWorld.Controllers.Api
             try
             {
                 var results = _repository.GetTripByUsername(this.User.Identity.Name);
+                Thread.Sleep(300);
                 return Ok(Mapper.Map<IEnumerable<TripViewModel>>(results));
             }
             catch (Exception ex)
