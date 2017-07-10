@@ -2,6 +2,7 @@
   "MailSettings": {
     "ToAddress": "pzapasnik@gmail.com"
   },
+  "DbProviderType" : "SQLite",
   "ConnectionStrings": {
     "WorldContextConnection": "Server=(localdb)\\MSSQLLocalDB;Database=TheWorldDb;Trusted_Connection=True;MultipleActiveResultSets=true;"
   },
