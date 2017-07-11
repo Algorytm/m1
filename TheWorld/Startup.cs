@@ -29,7 +29,7 @@ namespace TheWorld
         {
             _env = env;
 
-            var builder = new ConfigurationBuilder()
+            IConfigurationBuilder builder = new ConfigurationBuilder()
                 .SetBasePath(_env.ContentRootPath)
                 .AddJsonFile("config.json")
                 .AddEnvironmentVariables();
