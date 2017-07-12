@@ -25,8 +25,11 @@ namespace TheWorld.Models
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             base.OnConfiguring(optionsBuilder);
-
-            optionsBuilder.UseSqlServer(_config["ConnectionStrings:WorldContextConnection"]);
+            
+            if (_config["DbProviderType"].ToLower().Equals("sqlite"))
+                optionsBuilder.UseSqlite("Data Source=sqlite.db");
+            else
+                optionsBuilder.UseSqlServer(_config["ConnectionStrings:WorldContextConnection"]);
         }
 
     }
