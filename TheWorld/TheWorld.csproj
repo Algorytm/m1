@@ -33,7 +33,6 @@
     <Folder Include="Migrations\"/>
     <Folder Include="wwwroot\img\"/>
   </ItemGroup>
-<<<<<<< HEAD
   <ItemGroup>
     <Compile Update="Properties\Resources.Designer.cs">
       <DesignTime>True</DesignTime>
@@ -54,6 +53,3 @@
   </ItemGroup>
 
 </Project>
-=======
-</Project>
->>>>>>> 407ed0cc004bd2eb7f70ef1f334c1044adef0694
