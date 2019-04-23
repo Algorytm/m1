@@ -1,4 +1,5 @@
-﻿using AutoMapper;
+﻿using System.IO;
+using AutoMapper;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -10,6 +11,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Http.Authentication;
+using Microsoft.EntityFrameworkCore;
 using TheWorld.Models;
 using TheWorld.Services;
 using TheWorld.ViewModels;
@@ -50,7 +54,9 @@ namespace TheWorld
                 }
             );
 
-            services.AddIdentity<WorldUser, IdentityRole>(config =>
+            services.AddAuthentication(
+                options => options.SignInScheme = CookieAuthenticationDefaults.AuthenticationScheme
+                ).AddIdentity<WorldUser, IdentityRole>(config =>
                 {
                     config.User.RequireUniqueEmail = true;
                     config.Password.RequiredLength = 8;
@@ -99,7 +105,6 @@ namespace TheWorld
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, WorldContextSeedData seeder)
         {
-
             // DB Migration - poczebuje coby utworzyć minidb w sqlite
             using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
             {
